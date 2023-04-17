@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% load static %}  
+
+
+{% block 'main' %} 
+
+<main id="main">
+    
+    <div class="container">
+        
+        <div class="row">
+            <div class="col-md-6 mx-auto my-5">
+
+                <div class="card m-5 p-5" style="width: 25rem; height: 38rem;">
+
+                        <h3>Contact FoxFitness</h3>
+
+                        <form method="POST" action="">
+
+                            {% csrf_token %}
+
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Name</label>
+                                <input type="text" class="form-control" id="name" name="Fname" placeholder="Enter your name">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email address</label>
+                                <input type="email" class="form-control" id="email" name="emailHelp" placeholder="Enter your @gmail">
+                                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="phone" class="form-label">Phone Number</label>
+                                <input type="phone" class="form-control" id="phone" name="subject" placeholder="Enter your Mobile No.">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="content">Message:</label>
+                                <textarea class="form-control" name="content" id="content" cols="30" rows="5"></textarea>
+                            </div>
+
+                            <div class="mb-3">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+
+
+                        </form>
+                </div>
+                    
+
+            </div>
+        </div>
+    </div>
+
+        
+</main>
+
+
+{% endblock 'main' %}

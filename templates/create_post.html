@@ -1,0 +1,89 @@
+{% extends 'base.html' %} 
+
+{% block 'main' %}
+<main id="main">
+    <div class="container">
+        <div class="row" style="color: white;">
+            <div class="col-md-6 mx-auto my-5">
+
+                    <form method="POST" action="">
+                        {% csrf_token %}
+
+                        <div class="mb-3" style="color: white;">
+                            <label for="Fname" class="form-label">Full Name:</label>
+                            <input type="text" class="form-control" name="fullname" id="Fname" placeholder="Enter the Full Name">
+                            {% if msgf %}
+                            <span class="text-danger"><b>{{msgf}}</b></span>
+                            {% endif %}
+                        </div><!--fullname end-->
+
+                        <div class="mb-3">
+                            <label for="Fage" class="form-label">Age:</label>
+                            <input type="text" class="form-control" name="age" id="Fage" placeholder="Above 16 Years Only">
+                            {% if msga %}
+                            <span class="text-danger"><b>{{msga}}</b></span>
+                            {% endif %}
+                        </div><!--Age ends-->
+
+                        <div class="mb-3">
+                            <label for="Fgender" class="form-label">Gender:</label>
+                            <input type="text" class="form-control" name="gender" id="Fgender" placeholder="Male/Female">
+                            {% if msgg %}
+                            <span class="text-danger"><b>{{msgg}}</b></span>
+                            {% endif %}
+                        </div><!--gender ends-->
+
+                        <div class="mb-3">
+                            <label for="Fweight" class="form-label">Weight:</label>
+                            <input type="text" class="form-control" name="weight" id="Fweight" placeholder="Enter Your Body Weight">
+                            {% if msgw %}
+                            <span class="text-danger"><b>{{msgw}}</b></span>
+                            {% endif %}
+                        </div><!--weight-->
+
+                        <div class="mb-3">
+                            <select class="form-select" name="cat" aria-label="Default select example">
+                                <option>Select Workout Category</option>
+                                <option value="1">Aerobic Fitness</option>
+                                <option value="2">FullBody Fitness</option>
+                                <option value="3">Flexible Fitness</option>
+                            </select><!--Category ends-->
+                            {% if msgcat %}
+                            <span class="text-danger"><b>{{msgcat}}</b></span>
+                            {% endif %}
+                        </div>
+
+                        <div class="mb-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="status" value="1" id="beginner" checked>
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                    BEGINNER
+                                </label>
+                            </div>
+    
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="status" value="0" id="advanced">
+                                <label class="form-check-label" for="flexRadioDefault2">
+                                    ADVANCED
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <button type="submit" class="btn btn-danger" style="letter-spacing: 1px; font-size: 18PX;">RESERVE</button>
+                        </div>
+
+
+
+                    </form><!--form ends-->
+
+            </div><!--div for form ends-->
+
+
+        </div><!--row ends-->
+    </div><!--container ends-->
+
+</main>
+
+
+{% endblock 'main' %}

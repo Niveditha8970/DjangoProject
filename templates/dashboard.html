@@ -1,0 +1,82 @@
+{% extends 'base.html' %} 
+
+{% block 'main' %}
+<main id="main">
+    <div class="container">
+            <div class="row" style="color: rgb(218, 211, 211);">
+                  
+                        <div class="col-md-12 my-5 mx-5">
+                              <a href="/create_post"><button class="btn btn-danger" style="letter-spacing: 1px; font-size: 18px;">Reserve a Spot</button></a>
+                        </div>
+
+                  <div class="col-md-12 my-5">
+
+                        <table class="table" style="color: rgb(247, 240, 240); font-size: 18px;"><br><br><br>
+                              <tr style="letter-spacing: 1px;">
+                                    <th>Sr.No</th>
+                                    <th>FullName</th>
+                                    <th>Age</th>
+                                    <th>Gender</th>
+                                    <th>Weight</th>
+                                    <th>Category</th>
+                                    <th>Status</th>
+                                    <th>Edit</th>
+                                    <th>Delete</th>
+                              </tr>
+
+                              {% for x in data %}
+                                    <tr>
+                                          <td>{{ forloop.counter }}</td>
+                                          <td>{{x.fullname}}</td>
+                                          <td>{{x.age}}</td>
+                                          <td>{{x.gender}}</td>
+                                          <td>{{x.weight}}</td>
+
+
+                                          {% if x.cat == 1 %}
+                                                <td>Aerobic Fitness</td>
+                                          {% elif x.cat == 2 %}
+                                                <td>FullBody Fitness</td>
+                                          {% else %}
+                                                <td>Flexible Fitness</td>
+                                          {% endif %}
+
+
+
+                                          {% if x.status == 1 %}
+                                                <td>Beginner</td>
+                                          {% else %}
+                                                <td>Advanced</td>
+                                          {% endif %}
+
+                                          <td><a href="/edit/{{x.id}}"><button class="btn btn-warning">Edit</button></a></td>
+                                          <td><a href="/delete/{{x.id}}"><button class="btn btn-danger">Delete</button></a></td>
+                                    </tr>
+                              {% endfor %}
+                        </table><br><br><br><br>
+                  </div><!--Table records ends-->
+
+              
+
+                  <!--<div class="col-md-6">
+                        <h3>Filter by Category</h3>
+                        <p ><a href="/dash" style="color: white;">All</a></p>
+                        <p ><a href="/catfilter/1" style="color: white;">Aerobic Fitness</a></p>
+                        <p><a href="/catfilter/2" style="color: white;">FullBody Fitness</a></p>
+                        <p><a href="/catfilter/3" style="color: white;">Flexibil Fitness</a></p>
+                  </div>
+
+                  <div class="col-md-6">
+                        <h3>Filter by Status</h3>
+                        <p> <a href="/actfilter/1" style="color: white;">Beginner</a></p>
+                        <p><a href="/actfilter/0" style="color: white;">Advanced</a></p>
+                  </div>-->
+
+                  
+            </div>
+    </div>
+
+</main>
+
+
+{% endblock 'main' %}

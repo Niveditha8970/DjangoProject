@@ -1,0 +1,109 @@
+{% extends 'base.html' %} 
+
+{% block 'main' %}
+<br><br><br><br>
+<br>
+
+<hr> 
+<main id="main">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 mx-auto my-5">
+
+                <div class="change" style="color: rgb(247, 240, 240); font-size: 18px;">
+                        {% for x in data %}
+
+                            <form method="POST" action="/edit/{{x.id}}">
+                                {% csrf_token %}
+
+                                <div class="mb-3">
+                                    <label for="Fname" class="form-label">Full Name:</label>
+                                    <input type="text" class="form-control" value="{{x.fullname}}" name="fullname" id="Fname" placeholder="Enter the Full Name">
+                                </div><!--fullname end-->
+
+                                <div class="mb-3">
+                                    <label for="Fage" class="form-label">Age:</label>
+                                    <input type="text" class="form-control" value="{{x.age}}" name="age" id="Fage" placeholder="Above 16 Years Only">
+                                </div><!--Age ends-->
+
+                                <div class="mb-3">
+                                    <label for="Fgender" class="form-label">Gender:</label>
+                                    <input type="text" class="form-control" value="{{x.gender}}" name="gender" id="Fgender" placeholder="Male/Female">
+                                </div><!--gender ends-->
+
+                                <div class="mb-3">
+                                    <label for="Fweight" class="form-label">Weight:</label>
+                                    <input type="text" class="form-control" value="{{x.weight}}" name="weight" id="Fweight" placeholder="Enter Your Body Weight">
+                                </div><!--weight-->
+
+                                <div class="mb-3">
+                                    <select class="form-select" name="cat" aria-label="Default select example">
+                                        {% if x.cat == 1 %} 
+                                            <option value="1">Aerobic Fitness</option>
+                                        {% elif x.cat == 2 %} 
+                                            <option value="2">FullBody Fitness</option>
+                                        {% else %} 
+                                            <option value="3">Belly Fat</option>
+                                        {% endif %}
+                                        <option value="1">Aerobic Fitness</option>
+                                        <option value="2">Abs Fitness</option>
+                                        <option value="3">Flexibil Fitness</option>
+                                    </select><!--Category ends-->
+                                </div>
+
+                                <div class="mb-3">
+                                    {% if x.status == 1 %}
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="status" value="1" id="beginner" checked>
+                                        <label class="form-check-label" for="flexRadioDefault1">
+                                            BEGINNER
+                                        </label>
+                                    </div>
+            
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="status" value="0" id="advanced">
+                                        <label class="form-check-label" for="flexRadioDefault2">
+                                            ADVANCED
+                                        </label>
+                                    </div>
+                                    {% else %}
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="status" value="1" id="beginner">
+                                        <label class="form-check-label" for="flexRadioDefault1">
+                                            BEGINNER
+                                        </label>
+                                    </div>
+            
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="status" value="0" id="advanced" checked>
+                                        <label class="form-check-label" for="flexRadioDefault2">
+                                            ADVANCED
+                                        </label>
+                                    </div>
+                                    {% endif %}
+
+                                </div>
+
+                                <div class="mb-3">
+                                    <button type="submit" class="btn btn-danger">Update</button>
+                                </div>
+
+
+
+                            </form><!--form ends-->
+
+                        {% endfor %}
+
+                </div>
+
+
+            </div><!--div for form ends-->
+
+
+        </div><!--row ends-->
+    </div><!--container ends-->
+
+</main>
+
+
+{% endblock 'main' %}
