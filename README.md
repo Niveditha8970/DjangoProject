@@ -1,2 +1,2 @@
 # Projects
-Fitness Management System 
+Fitness Management System website using Python Django framework
